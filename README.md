@@ -88,7 +88,7 @@ cd shareholder-catalyst-landingai
 pip install -r requirements.txt
 
 # Run demo mode (no API keys required)
-streamlit run app.py
+financeaihackathon-anshul-sanjana.streamlit.app
 
 Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, allowing full exploration without configuration.
 
