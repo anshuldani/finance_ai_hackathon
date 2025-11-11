@@ -1,5 +1,7 @@
 ## Shareholder Catalyst — AI-Powered Activist Investor Intelligence
 
+View website: https://www.financeaihackathon-anshul-sanjana.streamlit.app
+
 Shareholder Catalyst is an AI-powered platform designed to reimagine how activist investors identify opportunities and inefficiencies in public companies.
 It combines document intelligence, financial modeling, and AI-driven reasoning to turn dense corporate filings into actionable insights — enabling faster, smarter, and more transparent investment decisions.
 
@@ -88,7 +90,7 @@ cd shareholder-catalyst-landingai
 pip install -r requirements.txt
 
 # Run demo mode (no API keys required)
-financeaihackathon-anshul-sanjana.streamlit.app
+streamlit run app.py
 
 Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, allowing full exploration without configuration.
 
