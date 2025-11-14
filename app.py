@@ -23,7 +23,7 @@ st.set_page_config(
 )
 
 # Demo mode flag
-DEMO_MODE = False  # Set to True for judges/demo purposes
+DEMO_MODE = True  # Set to True for judges/demo purposes
 
 # Helper functions for demo data
 def get_demo_result(ticker):
