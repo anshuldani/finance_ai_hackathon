@@ -2,8 +2,8 @@
 
 View website: https://financeaihackathon-anshul-sanjana.streamlit.app/
 
-Shareholder Catalyst is an AI-powered platform designed to reimagine how activist investors identify opportunities and inefficiencies in public companies.
-It combines document intelligence, financial modeling, and AI-driven reasoning to turn dense corporate filings into actionable insights — enabling faster, smarter, and more transparent investment decisions.
+Shareholder Catalyst is an AI-powered platform that reimagines how activist investors identify opportunities and inefficiencies in public companies.
+It combines document intelligence, financial modelling, and AI-driven reasoning to turn dense corporate filings into actionable insights — enabling faster, smarter, and more transparent investment decisions.
 
 ## Why We Built This
 
@@ -19,8 +19,8 @@ What if AI could read, understand, and interpret corporate filings like an analy
 ## What It Does
 	•	Document Intelligence: Extracts structured insights from SEC filings (10-K, 8-K, proxy statements) using LandingAI.
 	•	Financial Analysis: Computes activist-relevant metrics — ROE, ROIC, cash efficiency, leverage, and profitability.
-	•	Governance Evaluation: Analyzes board composition, tenure, compensation alignment, and independence.
-	•	AI Thesis Generation: Synthesizes financial and governance data into a coherent investment rationale using large language models.
+	•	Governance Evaluation: Analyses board composition, tenure, compensation alignment, and independence.
+	•	AI Thesis Generation: Synthesises financial and governance data into a coherent investment rationale using large language models.
 	•	Interactive Dashboard: Offers an analyst-friendly Streamlit interface to explore results dynamically.
 	•	Professional Reporting: Exports findings as structured reports (PDF, JSON, Markdown) for sharing or archival use.
 
@@ -52,13 +52,13 @@ The workflow integrates three core pillars:
     	•	Developed a modular Ratio Calculator to compute KPIs such as ROE, ROIC, and cash efficiency.
     	•	Implemented peer benchmarking for relative performance analysis across industries.
     
-    3. Governance Modeling
+    3. Governance Modelling
     	•	Parsed board data to assess tenure diversity, independence, and compensation alignment.
     	•	Combined these into a composite governance risk score that feeds into the activist index.
     
     4. AI-Generated Thesis
     	•	Used large language models to summarize findings into a concise, human-readable investment thesis.
-    	•	Automatically identifies catalysts such as excess cash, underutilized capital, or leadership concentration.
+    	•	Automatically identifies catalysts such as excess cash, underutilised capital, or leadership concentration.
     
     5. Dashboard & Reporting
     	•	Built with Streamlit, featuring interactive tabs for Executive Summary, Financials, Governance, and Thesis.
@@ -83,7 +83,7 @@ AI Thesis Summary:
 ## Quick Start
 
 # Clone repository
-git clone [your-repo-url]
+git clone https://www.github.com/anshuldani/finance_ai_hackathon
 cd shareholder-catalyst-landingai
 
 # Install dependencies
@@ -119,9 +119,9 @@ Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, all
 ## Why It Matters
 
 Shareholder Catalyst represents the next step in data-driven governance and financial intelligence.
-It showcases how AI can bridge the gap between quantitative rigor and strategic interpretation, transforming how investors uncover value.
+It showcases how AI can bridge the gap between quantitative rigour and strategic interpretation, transforming how investors uncover value.
 
-By blending document intelligence, financial modeling, and AI reasoning, this project highlights a future where human insight and machine precision work together — not to replace analysts, but to amplify their reach and speed.
+By blending document intelligence, financial modelling, and AI reasoning, this project highlights a future where human insight and machine precision work together — not to replace analysts, but to amplify their reach and speed.
 
 “Our goal was to make corporate activism smarter, faster, and more transparent — powered by AI that understands the language of finance.”
 
@@ -132,4 +132,5 @@ M.S. Data Science @ Illinois Tech Chicago
 🔗 sanjanawaghray.com￼
 
 Anshul Dani — Full-Stack & AI Engineer
+M.S. Artificial Intelligence @ Illinois Tech Chicago
 🔗 anshuldani.com￼
