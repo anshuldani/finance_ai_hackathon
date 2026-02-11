@@ -17,11 +17,17 @@ Shareholder Catalyst was built to answer that question.
 It transforms unstructured filings into structured intelligence, evaluates financial and governance performance, and generates clear investment theses — all within an interactive AI-driven dashboard. Our goal was not just to build a tool, but to create a framework for financial reasoning — one that blends domain expertise with automation.
 
 ## What It Does
+
 •	Document Intelligence: Extracts structured insights from SEC filings (10-K, 8-K, proxy statements) using LandingAI.
+
 •	Financial Analysis: Computes activist-relevant metrics — ROE, ROIC, cash efficiency, leverage, and profitability.
+
 •	Governance Evaluation: Analyses board composition, tenure, compensation alignment, and independence.
+
 •	AI Thesis Generation: Synthesises financial and governance data into a coherent investment rationale using large language models.
+
 •	Interactive Dashboard: Offers an analyst-friendly Streamlit interface to explore results dynamically.
+
 •	Professional Reporting: Exports findings as structured reports (PDF, JSON, Markdown) for sharing or archival use.
 
 ## How It Works
@@ -38,31 +44,44 @@ Market Data APIs ──────────┤
               Streamlit Dashboard & Report Export
 
 The workflow integrates three core pillars:
-	1.	LandingAI’s document intelligence for parsing unstructured SEC data.
-	2.	Custom ratio and peer analysis models for financial computation.
-	3.	LLM-based reasoning layer (OpenAI / Claude) to interpret signals like an analyst.
+	
+1.	LandingAI’s document intelligence for parsing unstructured SEC data.
+	
+2.	Custom ratio and peer analysis models for financial computation.
+	
+3.	LLM-based reasoning layer (OpenAI / Claude) to interpret signals like an analyst.
 
 ## Implementation Highlights
 
 1. Document Intelligence
-    	•	Integrated LandingAI Document Intelligence API to process SEC filings in multiple formats (HTML, PDF, text).
-    	•	Extracted key metrics including revenue, assets, cash flow, and governance details from proxy statements.
+
+   •	Integrated LandingAI Document Intelligence API to process SEC filings in multiple formats (HTML, PDF, text).
+
+   •	Extracted key metrics including revenue, assets, cash flow, and governance details from proxy statements.
     
 2. Financial Analytics
-    	•	Developed a modular Ratio Calculator to compute KPIs such as ROE, ROIC, and cash efficiency.
-    	•	Implemented peer benchmarking for relative performance analysis across industries.
+
+   •	Developed a modular Ratio Calculator to compute KPIs such as ROE, ROIC, and cash efficiency.
+
+   •	Implemented peer benchmarking for relative performance analysis across industries.
     
 3. Governance Modelling
-    	•	Parsed board data to assess tenure diversity, independence, and compensation alignment.
-    	•	Combined these into a composite governance risk score that feeds into the activist index.
+
+   •	Parsed board data to assess tenure diversity, independence, and compensation alignment.
+
+   •	Combined these into a composite governance risk score that feeds into the activist index.
     
 4. AI-Generated Thesis
-    	•	Used large language models to summarize findings into a concise, human-readable investment thesis.
-    	•	Automatically identifies catalysts such as excess cash, underutilised capital, or leadership concentration.
+
+   •	Used large language models to summarize findings into a concise, human-readable investment thesis.
+
+   •	Automatically identifies catalysts such as excess cash, underutilised capital, or leadership concentration.
     
 5. Dashboard & Reporting
-    	•	Built with Streamlit, featuring interactive tabs for Executive Summary, Financials, Governance, and Thesis.
-    	•	Outputs reports in multiple formats — ideal for investor presentations or internal research reviews.
+
+   •	Built with Streamlit, featuring interactive tabs for Executive Summary, Financials, Governance, and Thesis.
+
+   •	Outputs reports in multiple formats — ideal for investor presentations or internal research reviews.
 
 ## Sample Insight
 
@@ -70,7 +89,7 @@ Example: Apple Inc. (AAPL)
 
 Key Catalysts:
 	•	Excess cash reserves earning minimal return (potential capital reallocation signal).
-	•	Board tenure imbalance suggesting need for refreshment.
+	•   Board tenure imbalance suggesting need for refreshment.
 
 Financial Highlights:
 	•	ROE: 147% | ROIC: 28% | Operating Margin: 29.8%
