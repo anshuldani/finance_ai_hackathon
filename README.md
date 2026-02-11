@@ -87,13 +87,18 @@ The workflow integrates three core pillars:
 
 Example: Apple Inc. (AAPL)
 
+
 Key Catalysts:
-	•	Excess cash reserves earning minimal return (potential capital reallocation signal).
-	•   Board tenure imbalance suggesting need for refreshment.
+
+•	Excess cash reserves earning minimal return (potential capital reallocation signal).
+
+•   Board tenure imbalance suggesting need for refreshment.
 
 Financial Highlights:
-	•	ROE: 147% | ROIC: 28% | Operating Margin: 29.8%
-	•	Market Cap: $2.8T | Revenue Growth: -2.8% YoY
+
+•	ROE: 147% | ROIC: 28% | Operating Margin: 29.8%
+
+•	Market Cap: $2.8T | Revenue Growth: -2.8% YoY
 
 AI Thesis Summary:
 
@@ -114,9 +119,13 @@ streamlit run app.py
 Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, allowing full exploration without configuration.
 
 ## Architecture Overview
+
 •	Data Layer: SEC filings (EDGAR) + market data (Yahoo Finance)
+
 •	Processing Layer: LandingAI document parsing + custom ratio engine
+
 •	Reasoning Layer: LLM-based interpretation for activist insights
+
 •	Presentation Layer: Streamlit dashboard + export-ready reports
 
 ## Tech Stack
@@ -130,14 +139,19 @@ Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, all
 
 
 ## Security & Reliability
+
 •	Uses .env configuration for secure API key management.
+
 •	No permanent data storage — all processing is session-based.
+
 •	Graceful fallbacks for missing API responses.
+
 •	Average runtime: ~45 seconds per company profile.
 
 ## Why It Matters
 
 Shareholder Catalyst represents the next step in data-driven governance and financial intelligence.
+
 It showcases how AI can bridge the gap between quantitative rigour and strategic interpretation, transforming how investors uncover value.
 
 By blending document intelligence, financial modelling, and AI reasoning, this project highlights a future where human insight and machine precision work together — not to replace analysts, but to amplify their reach and speed.
