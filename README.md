@@ -1,4 +1,4 @@
-## Shareholder Catalyst — AI-Powered Activist Investor Intelligence
+$## Shareholder Catalyst — AI-Powered Activist Investor Intelligence
 
 View website: https://financeaihackathon-anshul-sanjana.streamlit.app/
 
@@ -32,16 +32,15 @@ It transforms unstructured filings into structured intelligence, evaluates finan
 
 ## How It Works
 
-SEC Filings ─► LandingAI API ─► Structured Data
-                           │
-Market Data APIs ──────────┤
-                           ▼
-             Financial & Governance Analytics
-                           │
-       ─► LLM-Based Investment Thesis Generation
-                           │
-                           ▼
-              Streamlit Dashboard & Report Export
+```mermaid
+graph TD
+    A[SEC Filings] --> B(LandingAI API)
+    B --> C[Structured Data]
+    D[Market Data APIs] --- B
+    C --> E[Financial & Governance Analytics]
+    E --> F[LLM-Based Investment Thesis Generation]
+    F --> G[Streamlit Dashboard & Report Export]
+```
 
 The workflow integrates three core pillars:
 	
