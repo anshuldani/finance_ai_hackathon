@@ -1,4 +1,4 @@
-$## Shareholder Catalyst — AI-Powered Activist Investor Intelligence
+## Shareholder Catalyst — AI-Powered Activist Investor Intelligence
 
 View website: https://financeaihackathon-anshul-sanjana.streamlit.app/
 
