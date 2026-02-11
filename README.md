@@ -129,13 +129,13 @@ Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, all
 
 ## Tech Stack
 
-    Category	Tools Used
-    Core Frameworks	Python, Streamlit, AsyncIO
-    AI & APIs	LandingAI, OpenAI GPT-4, Anthropic Claude
-    Data Sources	SEC EDGAR, Yahoo Finance
-    Libraries	Pandas, NumPy, Requests, ReportLab, YFinance, dotenv
-    Output Formats	PDF, Markdown, JSON
-
+| Category | Tools Used |
+| :--- | :--- |
+| **Core Frameworks** | Python, Streamlit, AsyncIO |
+| **AI & APIs** | LandingAI, OpenAI GPT-4, Anthropic Claude |
+| **Data Sources** | SEC EDGAR, Yahoo Finance |
+| **Libraries** | Pandas, NumPy, Requests, ReportLab, YFinance, dotenv |
+| **Output Formats** | PDF, Markdown, JSON |
 
 ## Security & Reliability
 
