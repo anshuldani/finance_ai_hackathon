@@ -110,13 +110,17 @@ AI Thesis Summary:
 ## Quick Start
 
 # Clone repository
+
 git clone https://www.github.com/anshuldani/finance_ai_hackathon
+
 cd shareholder-catalyst-landingai
 
 # Install dependencies
+
 pip install -r requirements.txt
 
 # Run demo mode (no API keys required)
+
 streamlit run app.py
 
 Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, allowing full exploration without configuration.
@@ -164,9 +168,13 @@ By blending document intelligence, financial modelling, and AI reasoning, this p
 ## 👥 Contributors
 
 Sanjana Waghray — Data Scientist & AI Engineer
-M.S. Data Science @ Illinois Tech Chicago
-🔗 sanjanawaghray.com￼
+
+- M.S. Data Science @ Illinois Tech Chicago
+
+- 🔗 sanjanawaghray.com￼
 
 Anshul Dani — Full-Stack & AI Engineer
-M.S. Artificial Intelligence @ Illinois Tech Chicago
-🔗 anshuldani.com￼
+
+- M.S. Artificial Intelligence @ Illinois Tech Chicago
+
+- 🔗 anshuldani.com￼
