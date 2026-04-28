@@ -24,25 +24,36 @@ The question Shareholder Catalyst answers: can LandingAI's document intelligence
 
 •	Professional Reporting: Exports findings as structured reports (PDF, JSON, Markdown) for sharing or archival use.
 
-## How It Works
+## How it works
 
-```mermaid
-graph TD
-    A[SEC Filings] --> B(LandingAI API)
-    B --> C[Structured Data]
-    D[Market Data APIs] --- B
-    C --> E[Financial & Governance Analytics]
-    E --> F[LLM-Based Investment Thesis Generation]
-    F --> G[Streamlit Dashboard & Report Export]
+```
+Ticker input (e.g. AAPL)
+        │
+        ├──► SEC EDGAR fetch ──► LandingAI document intelligence
+        │        10-K, proxy                    │
+        │                         Structured financial + governance data
+        │
+        ├──► Yahoo Finance ──► current price, market cap, shares
+        │
+        ▼
+  Ratio Calculator
+  (ROE, ROIC, operating margin, cash efficiency, leverage)
+        │
+  Peer Comparator
+  (percentile ranking vs. sector peers)
+        │
+  Governance Scorer
+  (board tenure, independence, comp alignment)
+        │
+        ▼
+  GPT-4o — activist thesis generation
+  ("catalyst identification: excess cash, board refresh, capital reallocation")
+        │
+        ▼
+  Streamlit dashboard  ──►  PDF / Markdown / JSON export
 ```
 
-The workflow integrates three core pillars:
-	
-1.	LandingAI’s document intelligence for parsing unstructured SEC data.
-	
-2.	Custom ratio and peer analysis models for financial computation.
-	
-3.	LLM-based reasoning layer (OpenAI / Claude) to interpret signals like an analyst.
+Three modules do the heavy lifting: `tools/ratio_calculator.py` computes the financial KPIs, `agents/governance_agent.py` scores the board, and `agents/thesis_generator.py` generates the final investment narrative using GPT-4o grounded in the extracted data.
 
 ## Implementation Highlights
 
