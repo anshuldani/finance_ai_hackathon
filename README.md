@@ -10,19 +10,15 @@ Activist investor research is slow and fragmented by design. An analyst building
 
 The question Shareholder Catalyst answers: can LandingAI's document intelligence pipeline extract structured financial and governance data from SEC filings accurately enough to power automated analysis — and is the resulting LLM-generated thesis useful to an actual investor?
 
-## What It Does
+## What it produces
 
-•	Document Intelligence: Extracts structured insights from SEC filings (10-K, 8-K, proxy statements) using LandingAI.
+Given a ticker, Shareholder Catalyst outputs:
 
-•	Financial Analysis: Computes activist-relevant metrics — ROE, ROIC, cash efficiency, leverage, and profitability.
-
-•	Governance Evaluation: Analyses board composition, tenure, compensation alignment, and independence.
-
-•	AI Thesis Generation: Synthesises financial and governance data into a coherent investment rationale using large language models.
-
-•	Interactive Dashboard: Offers an analyst-friendly Streamlit interface to explore results dynamically.
-
-•	Professional Reporting: Exports findings as structured reports (PDF, JSON, Markdown) for sharing or archival use.
+- **Financial KPIs**: ROE, ROIC, operating margin, cash-to-assets ratio, revenue growth, leverage — sourced from the 10-K via LandingAI extraction
+- **Governance risk score**: board tenure diversity, director independence percentage, CEO compensation alignment vs. peers — sourced from the proxy statement
+- **Peer benchmarking**: percentile rank across sector peers for each KPI (e.g. "ROE at 95th percentile, revenue growth at 32nd")
+- **Activist thesis**: a 3–5 sentence GPT-4o narrative identifying the highest-value catalyst (excess cash, board refresh, capital reallocation) with supporting data
+- **Export**: PDF report, Markdown summary, and raw JSON for downstream use
 
 ## How it works
 
