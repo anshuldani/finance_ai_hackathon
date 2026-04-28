@@ -1,10 +1,8 @@
-## Shareholder Catalyst — AI-Powered Activist Investor Intelligence
+# Shareholder Catalyst
 
-View website: https://financeaihackathon-anshul-sanjana.streamlit.app/
+Top 20, LandingAI Hackathon (Andrew Ng). Live demo: https://financeaihackathon-anshul-sanjana.streamlit.app/
 
-Shareholder Catalyst is an AI-powered platform that reimagines how activist investors identify opportunities and inefficiencies in public companies.
-
-It combines document intelligence, financial modelling, and AI-driven reasoning to turn dense corporate filings into actionable insights — enabling faster, smarter, and more transparent investment decisions.
+Shareholder Catalyst turns SEC filings into activist investor intelligence. Feed it a ticker, and in ~45 seconds it extracts financial metrics from the 10-K, scores governance risk from the proxy statement, benchmarks the company against peers, and generates a written investment thesis — the kind of analysis that takes a human analyst days.
 
 ## Why We Built This
 
