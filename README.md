@@ -83,26 +83,21 @@ Three modules do the heavy lifting: `tools/ratio_calculator.py` computes the fin
 
    •	Outputs reports in multiple formats — ideal for investor presentations or internal research reviews.
 
-## Sample Insight
+## Sample output — Apple Inc. (AAPL)
 
-Example: Apple Inc. (AAPL)
+**Financial KPIs**
 
+| Metric | Value | Peer Percentile |
+|---|---|---|
+| ROE | 147% | 95th |
+| ROIC | 28.1% | 88th |
+| Operating Margin | 29.8% | 91st |
+| Revenue Growth (1Y) | -2.8% | 32nd |
+| Cash-to-Assets | 8.5% | — |
 
-Key Catalysts:
+**Governance flags**: Board average tenure 15.3 years (imbalance signal). CEO comp at $63M vs. peer median $42M.
 
-•	Excess cash reserves earning minimal return (potential capital reallocation signal).
-
-•   Board tenure imbalance suggesting need for refreshment.
-
-Financial Highlights:
-
-•	ROE: 147% | ROIC: 28% | Operating Margin: 29.8%
-
-•	Market Cap: $2.8T | Revenue Growth: -2.8% YoY
-
-AI Thesis Summary:
-
-“Apple shows exceptional profitability but limited reinvestment efficiency. Activist opportunities may lie in cash redeployment and governance refresh.”
+**Generated thesis**: “Apple trades at a significant premium to peers on profitability but lags on growth. The $30B cash position (8.5% of assets) earning minimal return is the primary activist target — a buyback acceleration or special dividend would improve capital efficiency without strategic disruption. Secondary opportunity: board tenure concentration warrants a refreshment push at the next proxy cycle.”
 
 ## Quickstart
 
