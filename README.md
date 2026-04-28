@@ -104,23 +104,28 @@ AI Thesis Summary:
 
 “Apple shows exceptional profitability but limited reinvestment efficiency. Activist opportunities may lie in cash redeployment and governance refresh.”
 
-## Quick Start
+## Quickstart
 
-# Clone repository
-
-git clone https://www.github.com/anshuldani/finance_ai_hackathon
-
-cd shareholder-catalyst-landingai
-
-# Install dependencies
-
+```bash
+git clone https://github.com/anshuldani/finance_ai_hackathon
+cd finance_ai_hackathon
 pip install -r requirements.txt
+```
 
-# Run demo mode (no API keys required)
+Create a `.env` file:
 
+```env
+LANDINGAI_API_KEY=...
+OPENAI_API_KEY=sk-...
+```
+
+Run the app:
+
+```bash
 streamlit run app.py
+```
 
-Demo mode includes pre-loaded data for companies like AAPL, MSFT, and GOOGL, allowing full exploration without configuration.
+**Demo mode** (no API keys needed): the app ships with pre-loaded data for AAPL, MSFT, and GOOGL. Set `DEMO_MODE = True` in `app.py` (it's the default) to explore the full dashboard without configuring any keys.
 
 ## Architecture Overview
 
