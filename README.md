@@ -127,25 +127,18 @@ streamlit run app.py
 
 **Demo mode** (no API keys needed): the app ships with pre-loaded data for AAPL, MSFT, and GOOGL. Set `DEMO_MODE = True` in `app.py` (it's the default) to explore the full dashboard without configuring any keys.
 
-## Architecture Overview
+## Stack
 
-•	Data Layer: SEC filings (EDGAR) + market data (Yahoo Finance)
-
-•	Processing Layer: LandingAI document parsing + custom ratio engine
-
-•	Reasoning Layer: LLM-based interpretation for activist insights
-
-•	Presentation Layer: Streamlit dashboard + export-ready reports
-
-## Tech Stack
-
-| Category | Tools Used |
-| :--- | :--- |
-| **Core Frameworks** | Python, Streamlit, AsyncIO |
-| **AI & APIs** | LandingAI, OpenAI GPT-4, Anthropic Claude |
-| **Data Sources** | SEC EDGAR, Yahoo Finance |
-| **Libraries** | Pandas, NumPy, Requests, ReportLab, YFinance, dotenv |
-| **Output Formats** | PDF, Markdown, JSON |
+| Layer | Technology |
+|---|---|
+| UI | Python, Streamlit |
+| Document intelligence | LandingAI Document Intelligence API |
+| LLM (thesis generation) | OpenAI GPT-4o |
+| Data sources | SEC EDGAR, Yahoo Finance (`yfinance`) |
+| Financial computation | Custom `ratio_calculator.py`, `peer_comparator.py` |
+| Governance analysis | `governance_agent.py`, `analyst_agent.py` |
+| Reporting | ReportLab (PDF), Markdown, JSON |
+| Config | `python-dotenv` |
 
 ## Security & Reliability
 
