@@ -4,19 +4,11 @@ Top 20, LandingAI Hackathon (Andrew Ng). Live demo: https://financeaihackathon-a
 
 Shareholder Catalyst turns SEC filings into activist investor intelligence. Feed it a ticker, and in ~45 seconds it extracts financial metrics from the 10-K, scores governance risk from the proxy statement, benchmarks the company against peers, and generates a written investment thesis — the kind of analysis that takes a human analyst days.
 
-## Why We Built This
+## The problem
 
-The research behind activist investing is often tedious, fragmented, and human-limited. Analysts spend weeks combing through SEC filings, proxy statements, and financial ratios — a process that is prone to bias and data overload.
+Activist investor research is slow and fragmented by design. An analyst building a position thesis spends days sourcing a 10-K, pulling the proxy, computing 15+ financial ratios, benchmarking against peers, and then writing up a narrative that ties it together. Each step is manual. Most of the time is spent in data wrangling, not reasoning.
 
-## We wanted to ask:
-
-What if AI could read, understand, and interpret corporate filings like an analyst — but faster and with more consistency?
-
-Shareholder Catalyst was built to answer that question.
-
-It transforms unstructured filings into structured intelligence, evaluates financial and governance performance, and generates clear investment theses — all within an interactive AI-driven dashboard. 
-
-Our goal was not just to build a tool, but to create a framework for financial reasoning — one that blends domain expertise with automation.
+The question Shareholder Catalyst answers: can LandingAI's document intelligence pipeline extract structured financial and governance data from SEC filings accurately enough to power automated analysis — and is the resulting LLM-generated thesis useful to an actual investor?
 
 ## What It Does
 
