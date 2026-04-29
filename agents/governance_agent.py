@@ -4,7 +4,6 @@ Uses OpenAI GPT-4 for corporate governance analysis
 """
 
 import openai
-import json
 from typing import Dict
 
 class GovernanceAnalystAgent:
