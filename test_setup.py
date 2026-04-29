@@ -47,19 +47,17 @@ def check_dependencies():
     """Check if required packages are installed"""
     print("\n🔍 Checking dependencies...")
     
-    required = ['openai', 'yfinance', 'requests', 'dotenv']
+    required = [('openai', 'openai'), ('yfinance', 'yfinance'),
+                ('requests', 'requests'), ('dotenv', 'python-dotenv')]
     missing = []
-    
-    for package in required:
+
+    for module, pip_name in required:
         try:
-            if package == 'dotenv':
-                __import__('dotenv')
-            else:
-                __import__(package)
-            print(f"  ✅ {package}")
+            __import__(module)
+            print(f"  ✅ {pip_name}")
         except ImportError:
-            print(f"  ❌ {package}")
-            missing.append(package if package != 'dotenv' else 'python-dotenv')
+            print(f"  ❌ {pip_name}")
+            missing.append(pip_name)
     
     if missing:
         print(f"\n❌ Missing packages: {', '.join(missing)}")
