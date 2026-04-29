@@ -3,13 +3,14 @@
 Quick test for LandingAI API format based on error message
 """
 
+import os
 import requests
 import json
 
 def test_landingai_format():
     """Test the exact format LandingAI wants"""
-    
-    API_KEY = "b3JjNWdsYjZobXFmaXd6ZmdsM3g0OmFHSjVUVjg0dGJRTGlFWjVVSDFhUjd2WVVVd2RjeDh0"
+
+    API_KEY = os.environ.get("LANDING_AI_API_KEY") or os.environ.get("VISION_AGENT_API_KEY", "")
     ENDPOINT = "https://api.va.landing.ai/v1/ade/parse"
     
     # Simple test document
