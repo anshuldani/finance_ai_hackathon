@@ -3,6 +3,7 @@ Peer Company Comparator
 Compare target company against industry peers
 """
 
+import statistics
 from typing import Dict, List
 from dataclasses import dataclass
 
@@ -29,9 +30,9 @@ class PeerComparator:
         # In production: fetch from financial data API
         self.peer_database = {
             'technology': [
-                {'ticker': 'AAPL', 'roe': 147.0, 'roic': 45.0, 'margin': 30.0},
-                {'ticker': 'MSFT', 'roe': 38.0, 'roic': 28.0, 'margin': 42.0},
-                {'ticker': 'GOOGL', 'roe': 26.0, 'roic': 22.0, 'margin': 27.0},
+                {'ticker': 'AAPL', 'roe': 147.0, 'roic': 45.0, 'margin': 30.0, 'ev_revenue': 7.2},
+                {'ticker': 'MSFT', 'roe': 38.0, 'roic': 28.0, 'margin': 42.0, 'ev_revenue': 12.5},
+                {'ticker': 'GOOGL', 'roe': 26.0, 'roic': 22.0, 'margin': 27.0, 'ev_revenue': 6.1},
             ]
         }
     
@@ -48,22 +49,24 @@ class PeerComparator:
         peer_roes = [p['roe'] for p in peers]
         peer_roics = [p['roic'] for p in peers]
         peer_margins = [p['margin'] for p in peers]
-        
-        # Calculate medians
-        import statistics
+
         roe_median = statistics.median(peer_roes) if peer_roes else 0
         roic_median = statistics.median(peer_roics) if peer_roics else 0
         margin_median = statistics.median(peer_margins) if peer_margins else 0
-        
-        # Calculate gaps
+
         roe_gap = target_roe - roe_median
         roic_gap = target_roic - roic_median
         margin_gap = target_margin - margin_median
-        
-        # Calculate implied market cap (simplified)
+
         current_mc = target_metrics.get('market_cap', 0)
-        implied_mc = current_mc * 1.15  # Simplified 15% upside
-        
+        enterprise_value = target_metrics.get('enterprise_value', current_mc)
+        revenue = target_metrics.get('revenue_current', 0)
+
+        peer_ev_revenues = [p.get('ev_revenue', 5.0) for p in peers]
+        peer_ev_median = statistics.median(peer_ev_revenues) if peer_ev_revenues else 5.0
+        implied_mc = peer_ev_median * revenue if revenue else current_mc
+        upside = ((implied_mc - current_mc) / current_mc * 100) if current_mc else 0.0
+
         return PeerComparison(
             target_ticker=ticker,
             peer_group=peer_tickers,
@@ -73,7 +76,7 @@ class PeerComparator:
             roe_gap=roe_gap,
             roic_gap=roic_gap,
             margin_gap=margin_gap,
-            upside_to_peer_median=15.0,  # Simplified
+            upside_to_peer_median=upside,
             implied_market_cap_at_peer_median=implied_mc
         )
     
