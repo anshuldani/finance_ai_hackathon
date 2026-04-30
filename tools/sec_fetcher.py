@@ -243,7 +243,8 @@ class SECFetcher:
                 'size': file_size,
                 'accession': filing['accession']
             }
-        except:
+        except Exception as e:
+            print(f"      ❌ Alternate URL failed: {str(e)}")
             return None
     
     def get_latest_filing(self, filing_type: str) -> str:
