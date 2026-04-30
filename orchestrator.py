@@ -150,9 +150,9 @@ class ActivistIntelOrchestrator:
             )
         else:
             print(f"  ℹ️  No LLM API key found - using rule-based analysis")
-            financial_analysis = "Rule-based analysis (add LLM key for AI analysis)"
-            governance_analysis = "Rule-based analysis (add LLM key for AI analysis)"
-            ai_thesis = "Rule-based thesis (add LLM key for AI-generated thesis)"
+            financial_analysis = None
+            governance_analysis = None
+            ai_thesis = None
         
         processing_time = time.time() - start_time
         
@@ -246,25 +246,21 @@ def save_results(results: Dict, output_file: str = None):
         
         f.write("---\n\n")
         
-        # Write AI thesis if available
-        if results['ai_thesis'] and results['ai_thesis'] != "AI thesis not available (no API key)":
+        if results['ai_thesis']:
             f.write("# AI-GENERATED INVESTMENT THESIS\n\n")
             f.write(results['ai_thesis'])
             f.write("\n\n---\n\n")
-        
-        # Write basic thesis
+
         f.write("# BASIC INVESTMENT THESIS\n\n")
         f.write(results['basic_thesis'])
         f.write("\n\n---\n\n")
-        
-        # Write financial analysis
-        if results['financial_analysis'] and results['financial_analysis'] != "AI analysis not available (no API key)":
+
+        if results['financial_analysis']:
             f.write("# DETAILED FINANCIAL ANALYSIS\n\n")
             f.write(results['financial_analysis'])
             f.write("\n\n---\n\n")
-        
-        # Write governance analysis
-        if results['governance_analysis'] and results['governance_analysis'] != "AI analysis not available (no API key)":
+
+        if results['governance_analysis']:
             f.write("# DETAILED GOVERNANCE ANALYSIS\n\n")
             f.write(results['governance_analysis'])
     
