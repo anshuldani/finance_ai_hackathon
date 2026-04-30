@@ -3,16 +3,16 @@ Production Market Data Fetcher
 Get real-time stock prices and market data using yfinance
 """
 
-import sys
-import subprocess
 from typing import Dict, Optional
 
 try:
     import yfinance as yf
-except ImportError:
-    print("Installing yfinance...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "yfinance"])
-    import yfinance as yf
+except ImportError as e:
+    raise ImportError(
+        "yfinance is required for market data. Install it with: pip install yfinance"
+    ) from e
+
+
 class MarketDataFetcher:
     """Fetch real-time market data for stocks"""
     
