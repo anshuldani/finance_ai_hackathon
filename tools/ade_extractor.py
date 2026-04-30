@@ -3,6 +3,7 @@ LandingAI Direct API Integration (Updated)
 Handles PDF, HTML, and text filings robustly with correct file uploads.
 """
 
+import re
 import requests
 import asyncio
 from typing import Dict
@@ -78,7 +79,6 @@ class LandingAIDirectExtractor:
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
 
-            import re
             content = re.sub(r"<script[^>]*>.*?</script>", "", content, flags=re.DOTALL | re.IGNORECASE)
             content = re.sub(r"<style[^>]*>.*?</style>", "", content, flags=re.DOTALL | re.IGNORECASE)
 
@@ -142,8 +142,6 @@ class LandingAIDirectExtractor:
 
     def _extract_from_markdown(self, markdown: str) -> dict:
         """Extract financial values from markdown text."""
-        import re
-
         financial_data = {
             "revenue_current": 0,
             "net_income_current": 0,
