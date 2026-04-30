@@ -10,44 +10,36 @@ import time
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
+from tools.sec_fetcher import SECFetcher
+from tools.ade_extractor import LandingAIDirectExtractor
+from tools.ratio_calculator import RatioCalculator
+from tools.peer_comparator import PeerComparator
+from tools.market_data import MarketDataFetcher
+from agents.analyst_agent import FinancialAnalystAgent
+from agents.governance_agent import GovernanceAnalystAgent
+from agents.thesis_generator import ThesisGeneratorAgent
+
 load_dotenv()
 
 class ActivistIntelOrchestrator:
     """Main controller that coordinates all agents and tools"""
-    
+
     def __init__(self):
-        # Load API keys from environment
-        # LandingAI SDK uses VISION_AGENT_API_KEY by default, but we support both names
         self.landing_ai_key = os.getenv('VISION_AGENT_API_KEY') or os.getenv('LANDING_AI_API_KEY')
         self.openai_key = os.getenv('OPENAI_API_KEY')
         self.anthropic_key = os.getenv('ANTHROPIC_API_KEY')
-        
-        # Check which analysis LLM to use
         self.llm_key = self.openai_key or self.anthropic_key
-        
+
         if not self.landing_ai_key:
             print("\n⚠️  WARNING: LandingAI API key not found in environment!")
             print("Set VISION_AGENT_API_KEY or LANDING_AI_API_KEY in .env file.")
             print("LandingAI SDK requires this for document extraction.\n")
-        
+
         if not self.llm_key:
             print("\n⚠️  WARNING: No analysis LLM API key found!")
             print("Add OPENAI_API_KEY or ANTHROPIC_API_KEY to .env for AI analysis.")
             print("Using rule-based analysis instead.\n")
-        
-        # Import tools
-        from tools.sec_fetcher import SECFetcher
-        from tools.ade_extractor import LandingAIDirectExtractor
-        from tools.ratio_calculator import RatioCalculator
-        from tools.peer_comparator import PeerComparator
-        from tools.market_data import MarketDataFetcher
-        
-        # Import agents
-        from agents.analyst_agent import FinancialAnalystAgent
-        from agents.governance_agent import GovernanceAnalystAgent
-        from agents.thesis_generator import ThesisGeneratorAgent
-        
+
         # Initialize tools
         self.sec_fetcher_class = SECFetcher
         self.ade_extractor = LandingAIDirectExtractor(self.landing_ai_key)
