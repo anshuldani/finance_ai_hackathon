@@ -141,7 +141,7 @@ class SECFetcher:
                     continue
                 
                 # Extract accession number
-                acc_match = re.search(r'<accession-nunber>([\d-]+)</accession-nunber>', entry)
+                acc_match = re.search(r'<accession-number>([\d-]+)</accession-number>', entry)
                 if not acc_match:
                     # Try alternate format
                     acc_match = re.search(r'accession[_-]?number[=:]([0-9-]+)', entry, re.IGNORECASE)
