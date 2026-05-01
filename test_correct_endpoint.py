@@ -101,7 +101,7 @@ def test_key_decoding():
     print(f"\n🔍 Testing API Key Formats")
     print("="*60)
     
-    original_key = "b3JjNWdsYjZobXFmaXd6ZmdsM3g0OmFHSjVUVjg0dGJRTGlFWjVVSDFhUjd2WVVVd2RjeDh0"
+    original_key = os.environ.get("LANDING_AI_API_KEY") or os.environ.get("VISION_AGENT_API_KEY", "")
     
     # Test 1: Original key
     print(f"1. Original key: {original_key[:20]}...")
