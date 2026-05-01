@@ -4,7 +4,6 @@ Uses OpenAI GPT-4 to synthesize analyses into activist investment thesis
 """
 
 import openai
-import json
 from typing import Dict
 
 class ThesisGeneratorAgent:
