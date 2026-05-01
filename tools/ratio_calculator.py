@@ -3,7 +3,7 @@ Financial Ratio Calculator
 Calculates key metrics for activist analysis
 """
 
-from typing import Dict, Optional
+from typing import Dict
 from dataclasses import dataclass
 
 @dataclass
