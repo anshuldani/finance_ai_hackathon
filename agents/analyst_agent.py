@@ -1,23 +1,33 @@
-"""
-Financial Analyst Agent - OpenAI Implementation
-Uses OpenAI GPT-4 for real financial analysis
+"""Financial analyst agent — calls GPT-4o on extracted 10-K + market data
+to produce an activist-investor-style markdown analysis.
+
+Falls back to a stub message if the API call fails. See ISSUES.md #2 for the
+plan to replace that stub with a deterministic ratio-only analysis.
 """
 
-import openai
 from typing import Dict
 
+import openai
+
+
 class FinancialAnalystAgent:
-    """Analyzes financial performance and identifies value gaps"""
-    
-    def __init__(self, api_key: str):
+    """Analyzes financial performance and identifies value gaps."""
+
+    def __init__(self, api_key: str) -> None:
         self.client = openai.OpenAI(api_key=api_key)
-        self.model = "gpt-4o"  # Latest GPT-4 model
-    
-    def analyze(self, extracted_data: dict) -> str:
-        """
-        Run comprehensive financial analysis on extracted data
-        
-        Returns detailed markdown analysis
+        self.model = "gpt-4o"
+
+    def analyze(self, extracted_data: Dict) -> str:
+        """Run financial analysis on extracted data.
+
+        Args:
+            extracted_data: Mapping with keys ``"10k"`` and ``"market_data"``,
+                each a dict of numeric fields (revenue, net_income, etc.) as
+                produced by the LandingAI extraction tools.
+
+        Returns:
+            Markdown-formatted analysis from GPT-4o, or a fallback stub if the
+            API call fails.
         """
         
         print("  💰 Running financial analysis with GPT-4...")
@@ -56,7 +66,7 @@ class FinancialAnalystAgent:
             return self._fallback_analysis(financial_data, market_data)
     
     def _get_system_prompt(self) -> str:
-        """System prompt for financial analysis"""
+        """Return the system prompt for the GPT-4o analyst persona."""
         return """You are an expert financial analyst specializing in activist investing.
 
 Your role is to analyze company financials and identify value creation opportunities.
@@ -78,7 +88,7 @@ Output in markdown with:
 - Quantified value creation opportunities"""
     
     def _build_analysis_prompt(self, financial_data: Dict, market_data: Dict) -> str:
-        """Build analysis prompt with financial data"""
+        """Format the user prompt with extracted ratios and balance sheet data."""
         
         revenue_current = financial_data.get('revenue_current', 0)
         revenue_prior_1 = financial_data.get('revenue_prior_1', 0)
@@ -147,7 +157,11 @@ Output in markdown with:
 Format your response as a detailed markdown report with specific, actionable findings."""
     
     def _fallback_analysis(self, financial_data: Dict, market_data: Dict) -> str:
-        """Fallback analysis if API call fails"""
+        """Return a placeholder report when the OpenAI call fails.
+
+        This is a stub kept for hackathon-demo robustness; ISSUES.md #2 tracks
+        replacing it with a deterministic ratio-only analysis.
+        """
         
         revenue = financial_data.get('revenue_current', 0)
         net_income = financial_data.get('net_income_current', 0)
