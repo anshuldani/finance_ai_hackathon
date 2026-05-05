@@ -13,7 +13,7 @@ test-setup:
 	$(PYTHON) test_setup.py
 
 test:
-	$(PYTHON) -m pytest -v test_correct_endpoint.py test_landingai_format.py
+	$(PYTHON) -m pytest tests/
 
 lint:
 	$(PYTHON) -m pyflakes agents/ tools/ app.py orchestrator.py || true
