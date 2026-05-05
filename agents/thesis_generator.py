@@ -1,32 +1,44 @@
-"""
-Thesis Generator Agent - OpenAI Implementation
-Uses OpenAI GPT-4 to synthesize analyses into activist investment thesis
+"""Thesis generator — synthesises FinancialAnalystAgent and
+GovernanceAnalystAgent outputs into an activist investment thesis with a
+fixed structure (executive summary, catalysts, action plan, valuation,
+risks, recommendation).
+
+Falls back to a placeholder if the API call fails (see ISSUES.md #2).
 """
 
-import openai
 from typing import Dict
 
+import openai
+
+
 class ThesisGeneratorAgent:
-    """Synthesizes analyses into activist investment thesis"""
-    
-    def __init__(self, api_key: str):
+    """Synthesizes the two analyst outputs into an activist thesis."""
+
+    def __init__(self, api_key: str) -> None:
         self.client = openai.OpenAI(api_key=api_key)
-        self.model = "gpt-4o"  # Latest GPT-4 model
-    
-    def generate_thesis(self, financial_analysis: str, governance_analysis: str, 
-                       company_name: str, ticker: str, extracted_data: dict) -> str:
-        """
-        Generate complete activist investment thesis
-        
+        self.model = "gpt-4o"
+
+    def generate_thesis(
+        self,
+        financial_analysis: str,
+        governance_analysis: str,
+        company_name: str,
+        ticker: str,
+        extracted_data: Dict,
+    ) -> str:
+        """Generate the full activist investment thesis.
+
         Args:
-            financial_analysis: Output from FinancialAnalystAgent
-            governance_analysis: Output from GovernanceAnalystAgent
-            company_name: Company name
-            ticker: Stock ticker
-            extracted_data: Raw extracted data for context
-            
+            financial_analysis: Markdown produced by ``FinancialAnalystAgent``.
+            governance_analysis: Markdown produced by ``GovernanceAnalystAgent``.
+            company_name: Display name (e.g. "Apple Inc.").
+            ticker: Equity ticker (e.g. "AAPL").
+            extracted_data: Raw extraction payload — used to surface
+                ``market_data.current_price``, ``market_cap``, and
+                ``10k.revenue_current`` in the prompt header.
+
         Returns:
-            Complete investment thesis in markdown
+            Markdown thesis from GPT-4o, or a placeholder stub on API failure.
         """
         
         print("  📝 Generating investment thesis with GPT-4...")
@@ -67,7 +79,7 @@ class ThesisGeneratorAgent:
             return self._fallback_thesis(company_name, ticker)
     
     def _get_system_prompt(self) -> str:
-        """System prompt for thesis generation"""
+        """Return the system prompt that fixes the thesis section structure."""
         return """You are a senior analyst at an activist investment fund, preparing a comprehensive investment thesis.
 
 Your role is to synthesize financial and governance analyses into a compelling, actionable activist thesis.
@@ -109,9 +121,15 @@ Clear recommendation: Initiate position or Pass
 Be direct, quantitative, and action-oriented. Use bold for key findings.
 This is for LP presentation and internal investment committee."""
     
-    def _build_thesis_prompt(self, financial_analysis: str, governance_analysis: str,
-                            company_name: str, ticker: str, extracted_data: dict) -> str:
-        """Build thesis generation prompt"""
+    def _build_thesis_prompt(
+        self,
+        financial_analysis: str,
+        governance_analysis: str,
+        company_name: str,
+        ticker: str,
+        extracted_data: Dict,
+    ) -> str:
+        """Format the user prompt: header line + the two analyses verbatim."""
         
         # Extract key metrics for context
         financial_data = extracted_data.get('10k', {})
@@ -161,7 +179,11 @@ Focus on:
 This thesis will be presented to the investment committee and potentially to the board of {company_name}."""
     
     def _fallback_thesis(self, company_name: str, ticker: str) -> str:
-        """Fallback thesis if API call fails"""
+        """Return a placeholder thesis when the OpenAI call fails.
+
+        Stub kept for hackathon-demo robustness; ISSUES.md #2 tracks
+        replacing it with a deterministic ratio-only summary.
+        """
         
         return f"""# Investment Thesis: {company_name} ({ticker})
 
