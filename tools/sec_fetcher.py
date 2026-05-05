@@ -1,9 +1,13 @@
-import requests
+import logging
 import os
-from typing import Dict, List
-from datetime import datetime, timedelta
-import time
 import re
+import time
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+
+import requests
+
+logger = logging.getLogger(__name__)
 
 class SECFetcher:
     """Fetches real SEC filings from EDGAR database"""
@@ -162,8 +166,12 @@ class SECFetcher:
                 })
                 
             except Exception as e:
+                # ATOM entry didn't match the expected shape (date / accession
+                # missing or malformed). Log so a SEC schema change surfaces
+                # instead of silently returning zero filings.
+                logger.warning("Skipping ATOM entry — parse failure: %s", e)
                 continue
-        
+
         # Sort by date (most recent first)
         filings.sort(key=lambda x: x['date'], reverse=True)
         
@@ -220,8 +228,8 @@ class SECFetcher:
             # Try alternate URL format
             return self._try_alternate_url(filing, filing_type, filepath)
     
-    def _try_alternate_url(self, filing: Dict, filing_type: str, filepath: str) -> Dict:
-        """Try alternate URL format if first attempt fails"""
+    def _try_alternate_url(self, filing: Dict, filing_type: str, filepath: str) -> Optional[Dict]:
+        """Try alternate URL format if first attempt fails. Returns None on failure."""
         
         try:
             # Try the document viewer URL
@@ -247,8 +255,8 @@ class SECFetcher:
             print(f"      ❌ Alternate URL failed: {str(e)}")
             return None
     
-    def get_latest_filing(self, filing_type: str) -> str:
-        """Get path to most recent filing"""
+    def get_latest_filing(self, filing_type: str) -> Optional[str]:
+        """Get path to most recent filing, or None if none exist."""
         filings = self.fetch_filings([filing_type], years=1)
         if filings.get(filing_type) and len(filings[filing_type]) > 0:
             return filings[filing_type][0]['path']
