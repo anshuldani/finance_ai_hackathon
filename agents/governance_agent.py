@@ -1,23 +1,34 @@
-"""
-Governance Analyst Agent - OpenAI Implementation
-Uses OpenAI GPT-4 for corporate governance analysis
+"""Governance analyst agent — calls GPT-4o on extracted proxy data plus
+financial context to surface board-composition and pay-alignment issues
+that an activist could target.
+
+Falls back to a stub message if the API call fails (see ISSUES.md #2).
 """
 
-import openai
 from typing import Dict
 
+import openai
+
+
 class GovernanceAnalystAgent:
-    """Analyzes corporate governance and compensation practices"""
-    
-    def __init__(self, api_key: str):
+    """Analyzes corporate governance and compensation practices."""
+
+    def __init__(self, api_key: str) -> None:
         self.client = openai.OpenAI(api_key=api_key)
-        self.model = "gpt-4o"  # Latest GPT-4 model
-    
-    def analyze(self, extracted_data: dict) -> str:
-        """
-        Run comprehensive governance analysis on extracted proxy data
-        
-        Returns detailed markdown analysis of governance issues
+        self.model = "gpt-4o"
+
+    def analyze(self, extracted_data: Dict) -> str:
+        """Run governance analysis on extracted proxy + 10-K + market data.
+
+        Args:
+            extracted_data: Mapping with keys ``"proxy"``, ``"10k"``, and
+                ``"market_data"``. ``proxy`` is expected to contain
+                ``ceo_total_comp_current`` / ``ceo_total_comp_prior_1`` /
+                ``board_members`` (list of dicts) /
+                ``say_on_pay_approval_pct``.
+
+        Returns:
+            Markdown analysis from GPT-4o, or a fallback stub on API failure.
         """
         
         print("  👔 Running governance analysis with GPT-4...")
@@ -57,7 +68,7 @@ class GovernanceAnalystAgent:
             return self._fallback_analysis(proxy_data)
     
     def _get_system_prompt(self) -> str:
-        """System prompt for governance analysis"""
+        """Return the system prompt for the GPT-4o governance persona."""
         return """You are an expert corporate governance analyst specializing in activist investing.
 
 Your role is to identify governance red flags and compensation misalignments that activist investors can target.
@@ -79,7 +90,7 @@ Output in markdown with:
 - Actionable recommendations for activist campaigns"""
     
     def _build_analysis_prompt(self, proxy_data: Dict, financial_data: Dict, market_data: Dict) -> str:
-        """Build analysis prompt with governance data"""
+        """Format the user prompt with comp ratios and the board roster."""
         
         ceo_comp_current = proxy_data.get('ceo_total_comp_current', 0)
         ceo_comp_prior = proxy_data.get('ceo_total_comp_prior_1', 0)
@@ -149,7 +160,11 @@ Output in markdown with:
 Be specific with names, numbers, and recommendations. This is for an activist proxy fight."""
     
     def _fallback_analysis(self, proxy_data: Dict) -> str:
-        """Fallback analysis if API call fails"""
+        """Return a placeholder report when the OpenAI call fails.
+
+        Stub kept for hackathon-demo robustness; ISSUES.md #2 tracks
+        replacing it with a deterministic ratio-only analysis.
+        """
         
         ceo_comp = proxy_data.get('ceo_total_comp_current', 0)
         say_on_pay = proxy_data.get('say_on_pay_approval_pct', 0)
