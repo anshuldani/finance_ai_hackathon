@@ -3,7 +3,7 @@ Production Market Data Fetcher
 Get real-time stock prices and market data using yfinance
 """
 
-from typing import Dict, Optional
+from typing import Any, Dict, List, Optional
 
 try:
     import yfinance as yf
@@ -16,8 +16,8 @@ except ImportError as e:
 class MarketDataFetcher:
     """Fetch real-time market data for stocks"""
     
-    def __init__(self):
-        self.cache = {}
+    def __init__(self) -> None:
+        self.cache: Dict[str, Dict[str, Any]] = {}
     
     def get_market_data(self, ticker: str) -> Dict:
         """
@@ -87,10 +87,10 @@ class MarketDataFetcher:
                 'fifty_two_week_low': 0
             }
     
-    def get_historical_prices(self, ticker: str, period: str = "1y") -> Optional[Dict]:
+    def get_historical_prices(self, ticker: str, period: str = "1y") -> Optional[Dict[str, List[Any]]]:
         """
         Get historical price data
-        
+
         Args:
             ticker: Stock ticker
             period: Time period (1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max)

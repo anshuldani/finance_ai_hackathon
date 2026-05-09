@@ -3,7 +3,7 @@ Financial Ratio Calculator
 Calculates key metrics for activist analysis
 """
 
-from typing import Dict
+from typing import Dict, Optional
 from dataclasses import dataclass
 
 @dataclass
@@ -22,8 +22,8 @@ class FinancialMetrics:
 class RatioCalculator:
     """Calculate financial ratios from extracted SEC filing data"""
     
-    def __init__(self):
-        self.metrics = None
+    def __init__(self) -> None:
+        self.metrics: Optional[FinancialMetrics] = None
     
     def calculate_all_ratios(self, extracted_data: Dict) -> FinancialMetrics:
         """Calculate comprehensive financial ratios"""
