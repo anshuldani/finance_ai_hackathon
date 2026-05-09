@@ -5,7 +5,7 @@ OpenAI-powered version
 """
 
 import asyncio
-from typing import Dict
+from typing import Dict, Optional
 import time
 import os
 from dotenv import load_dotenv
@@ -24,7 +24,7 @@ load_dotenv()
 class ActivistIntelOrchestrator:
     """Main controller that coordinates all agents and tools"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.landing_ai_key = os.getenv('VISION_AGENT_API_KEY') or os.getenv('LANDING_AI_API_KEY')
         self.openai_key = os.getenv('OPENAI_API_KEY')
         self.anthropic_key = os.getenv('ANTHROPIC_API_KEY')
@@ -175,7 +175,15 @@ class ActivistIntelOrchestrator:
             'processing_time': processing_time
         }
     
-    def _generate_basic_thesis(self, ticker, company_name, metrics, red_flags, peer_comp, extracted_data):
+    def _generate_basic_thesis(
+        self,
+        ticker: str,
+        company_name: str,
+        metrics: "FinancialMetrics",
+        red_flags: Dict[str, str],
+        peer_comp: "PeerComparison",
+        extracted_data: Dict,
+    ) -> str:
         """Generate basic rule-based investment thesis"""
         
         # Calculate key metrics for thesis
@@ -232,7 +240,7 @@ Based on peer valuation analysis, {ticker} trades at a {abs(peer_comp.upside_to_
         return thesis
 
 
-def save_results(results: Dict, output_file: str = None):
+def save_results(results: Dict, output_file: Optional[str] = None) -> str:
     """Save analysis results to file"""
     
     if output_file is None:
