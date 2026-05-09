@@ -6,7 +6,7 @@ Handles PDF, HTML, and text filings robustly with correct file uploads.
 import re
 import requests
 import asyncio
-from typing import Dict
+from typing import Any, Dict, Optional
 import json
 import base64
 from pathlib import Path
@@ -15,7 +15,7 @@ from pathlib import Path
 class LandingAIDirectExtractor:
     """Direct API integration with LandingAI using correct endpoint"""
 
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str) -> None:
         self.api_key = api_key
         self.endpoint = "https://api.va.landing.ai/v1/ade/parse"
 

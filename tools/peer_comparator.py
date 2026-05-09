@@ -4,7 +4,7 @@ Compare target company against industry peers
 """
 
 import statistics
-from typing import Dict, List
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 
 @dataclass
@@ -25,7 +25,7 @@ class PeerComparison:
 class PeerComparator:
     """Compare company against industry peers"""
     
-    def __init__(self):
+    def __init__(self) -> None:
         # Hardcoded peer data for demo
         # In production: fetch from financial data API
         self.peer_database = {
